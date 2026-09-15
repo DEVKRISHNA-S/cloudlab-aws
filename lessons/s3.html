@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S3 — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M4 6.5c0-1.4 3.6-2.5 8-2.5s8 1.1 8 2.5-3.6 2.5-8 2.5-8-1.1-8-2.5z"/><path d="M4 6.5V17c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V6.5M4 11.8c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></svg></span>
+    <div><h1 class="lesson-title">S3</h1><p class="lesson-tagline">Object storage</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">S3 (Simple Storage Service) stores files — called objects — durably and at effectively unlimited scale, organized into containers called buckets.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Not everything belongs on a server&#x27;s local disk. Static assets, backups, and uploaded files need storage that survives independently of any single instance, and scales without planning.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">This project&#x27;s static frontend assets and backup files are stored in a private S3 bucket. The EC2 instance&#x27;s IAM role is granted read/write access to that bucket only.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Local disk storage disappears if a server is replaced, and doesn&#x27;t scale past one machine. S3 solves this by decoupling storage from compute — any number of servers can read and write the same durable object store.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The Mental Model</h2>
+<div class="mental-grid">
+  <div class="mental-card"><div class="mental-card-label">A filing cabinet with folders</div><div class="mental-card-detail">Real nested folders, files locked to one physical location.</div></div>
+  <div class="mental-card right"><div class="mental-card-label">A bucket with keys</div><div class="mental-card-detail">A flat space of objects addressed by a full &#x27;path-like&#x27; key — folders are just a naming convention, not a real hierarchy.</div></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">This project&#x27;s bucket layout</h2><div class="bucket-tree">cloudlab-assets/<div class="branch">├── images/</div><div class="branch">├── assets/</div><div class="branch">├── documents/</div><div class="branch">├── backups/</div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">Buckets</div><div class="concept-def">Top-level containers for objects, each with a globally unique name.</div></div><div class="concept-card"><div class="concept-term">Objects</div><div class="concept-def">The files themselves, stored along with metadata.</div></div><div class="concept-card"><div class="concept-term">Keys</div><div class="concept-def">An object&#x27;s unique identifier inside a bucket — looks like a file path, but is really just a string.</div></div><div class="concept-card"><div class="concept-term">Storage classes</div><div class="concept-def">Different price/retrieval-speed tiers, like Standard, Infrequent Access, and Glacier.</div></div><div class="concept-card"><div class="concept-term">Bucket policies</div><div class="concept-def">JSON rules controlling who can access a bucket and how.</div></div><div class="concept-card"><div class="concept-term">Public vs private</div><div class="concept-def">Whether a bucket&#x27;s objects can be read by anyone on the internet, or only by authorized identities.</div></div><div class="concept-card"><div class="concept-term">Static website hosting</div><div class="concept-def">Serving HTML/CSS/JS directly from a bucket, no server required.</div></div><div class="concept-card"><div class="concept-term">Presigned URLs</div><div class="concept-def">A temporary, time-limited link granting access to a private object without making it public.</div></div><div class="concept-card"><div class="concept-term">Versioning</div><div class="concept-def">Keeping every past version of an object so overwrites and deletes are recoverable.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M4 5h16v14H4z"/><path d="M7.5 9.5l3 2.5-3 2.5M13 15h4"/></svg>Terminal</h2>
+<p class="text-mute" style="margin-bottom:16px;font-size:14px;">A realistic simulation — nothing here runs on a real server.</p>
+<div class="terminal" data-terminal>
+  <div class="terminal-titlebar">
+    <span class="dot dot-coral"></span><span class="dot dot-amber"></span><span class="dot dot-mint"></span>
+    <span class="terminal-title">s3@cloudlab:~</span>
+  </div>
+  <script type="application/json" data-terminal-lines>[{"cmd": "aws s3 ls s3://cloudlab-assets/", "output": "PRE images/\nPRE assets/\nPRE documents/\nPRE backups/"}, {"cmd": "aws s3 cp diagram.svg s3://cloudlab-assets/images/", "output": "upload: ./diagram.svg to s3://cloudlab-assets/images/diagram.svg"}]</script>
+  <div class="terminal-body" data-terminal-body></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Making a bucket public to &#x27;quickly fix&#x27; an access error.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Forgetting that deleting an object without versioning is permanent.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Storing secrets or credentials as plain objects in a bucket.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Assuming S3 has real folders instead of key-based naming.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You need to let a user download one private file for the next 10 minutes, without making the bucket public. What's the right tool?", "options": ["A bucket policy allowing all reads", "A presigned URL", "Making the object versioned", "Changing the storage class"], "correct": 1, "explanation": "A presigned URL grants time-limited access to a single private object, without ever exposing the bucket itself."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>S3 stores objects durably, independent of any single server</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Buckets are flat; &#x27;folders&#x27; are just naming convention</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Presigned URLs share private objects safely and temporarily</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="s3">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="lambda.html">Next: Lambda <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

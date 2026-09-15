@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>API Gateway — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="3" y="10" width="6" height="4" rx="1"/><rect x="15" y="10" width="6" height="4" rx="1"/><path d="M9 12h6M12 10V6a2 2 0 012-2h2M12 14v4a2 2 0 002 2h2"/></svg></span>
+    <div><h1 class="lesson-title">API Gateway</h1><p class="lesson-tagline">Expose your functions as APIs</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">API Gateway is the front door for HTTP requests, turning them into events that trigger backend logic like Lambda.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Lambda functions have no built-in way to receive a web request. API Gateway provides routes, methods, and a public URL, then hands the request off to your code.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">This project&#x27;s Lambda utility function is reachable at a single API Gateway route, which validates the incoming request before invoking the function.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Without a managed entry point, exposing serverless functions to the web would mean building and securing your own HTTP layer. API Gateway solves this with a managed, scalable front door.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The request path</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">Client sends an HTTP request</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">API Gateway matches a route + method</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">Request is passed to Lambda</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">Lambda returns a response</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">API Gateway sends it back to the client</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Try the Route</h2>
+<div class="card" style="font-family:var(--font-mono);font-size:14px;">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+    <span class="badge badge-mint">GET</span><span>/hello</span>
+  </div>
+  <pre style="background:var(--night);border:1px solid var(--line);border-radius:8px;padding:12px;color:var(--mute);margin:0;">{
+  &quot;message&quot;: &quot;Hello from Lambda&quot;
+}</pre>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">REST APIs</div><div class="concept-def">The original, feature-rich API Gateway type, with fine-grained request/response control.</div></div><div class="concept-card"><div class="concept-term">HTTP APIs</div><div class="concept-def">A lighter, cheaper, lower-latency API Gateway type for simpler use cases.</div></div><div class="concept-card"><div class="concept-term">Routes</div><div class="concept-def">A path like /hello that clients call.</div></div><div class="concept-card"><div class="concept-term">Methods</div><div class="concept-def">The HTTP verb (GET, POST, etc.) a route responds to.</div></div><div class="concept-card"><div class="concept-term">Integration</div><div class="concept-def">The backend a route is wired to — most commonly a Lambda function.</div></div><div class="concept-card"><div class="concept-term">Authentication basics</div><div class="concept-def">API keys, IAM auth, or token-based authorizers controlling who can call a route.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Leaving a route completely open when it should require an API key or token.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Choosing a full REST API when a simpler HTTP API would do.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Not validating input at the gateway, pushing all validation into the function.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Forgetting to enable CORS for a route called from a browser.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A browser-based app calls your API Gateway route and gets blocked by the browser with a CORS error. What's missing?", "options": ["An IAM role on the Lambda function", "CORS configuration on the API Gateway route", "A larger Lambda memory allocation", "A Route 53 hosted zone"], "correct": 1, "explanation": "CORS errors are enforced by the browser and fixed by explicitly allowing the calling origin in the API Gateway route's CORS settings."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>API Gateway is the managed front door for HTTP requests</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Routes and methods map incoming calls to backend logic</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>It pairs naturally with Lambda for serverless APIs</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="apigw">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="networking.html">Next: Networking Fundamentals <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

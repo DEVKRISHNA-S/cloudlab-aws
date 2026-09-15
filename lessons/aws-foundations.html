@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AWS Foundations — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="12" cy="12" r="9"/><path d="M3 9h18M3 15h18M12 3c2.2 2.5 3.3 5.6 3.3 9s-1.1 6.5-3.3 9c-2.2-2.5-3.3-5.6-3.3-9S9.8 5.5 12 3z"/></svg></span>
+    <div><h1 class="lesson-title">AWS Foundations</h1><p class="lesson-tagline">Global infrastructure &amp; shared responsibility</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">Before diving into individual services, this module covers how AWS is physically organized worldwide, how the Management Console works, and where AWS&#x27;s security responsibility ends and yours begins.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Every service you&#x27;ll touch — EC2, S3, VPC — lives inside this bigger picture: a specific region, a specific account, under a specific division of security responsibility.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">This project is deployed in a single AWS region and account, secured under the shared-responsibility model — AWS secures the physical data center and hypervisor; this project&#x27;s own configuration (IAM policies, security groups, encryption) is on the project&#x27;s side of the line.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Without a shared, explicit boundary of responsibility, teams either assume AWS handles more security than it does, or duplicate effort AWS already covers. The Shared Responsibility Model draws that line explicitly.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Where AWS&#x27;s responsibility ends</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">AWS secures the physical data centers and hardware</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">AWS secures the virtualization layer (the hypervisor)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">You secure your operating system, application, and data</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">You configure IAM, security groups, and encryption correctly</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">Compliance is a shared, ongoing responsibility on both sides</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">AWS Global Infrastructure</div><div class="concept-def">Regions and Availability Zones distributed worldwide, so resources can run close to users and survive local failures.</div></div><div class="concept-card"><div class="concept-term">Service categories</div><div class="concept-def">Compute, storage, database, networking, and more — the broad groupings AWS services fall into.</div></div><div class="concept-card"><div class="concept-term">AWS Management Console</div><div class="concept-def">The web-based interface for configuring and monitoring AWS resources.</div></div><div class="concept-card"><div class="concept-term">Shared Responsibility Model</div><div class="concept-def">AWS secures &#x27;the cloud&#x27; (infrastructure); you secure &#x27;what&#x27;s in the cloud&#x27; (your configuration and data).</div></div><div class="concept-card"><div class="concept-term">Securing accounts</div><div class="concept-def">Root account protection, MFA, and IAM as the first line of defense.</div></div><div class="concept-card"><div class="concept-term">Securing data</div><div class="concept-def">Encryption at rest and in transit, and controlled access to it.</div></div><div class="concept-card"><div class="concept-term">Compliance</div><div class="concept-def">Meeting regulatory and industry standards — a responsibility shared between AWS&#x27;s certifications and your own configuration.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Assuming AWS&#x27;s compliance certifications automatically make your application compliant.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Leaving the root account without MFA enabled.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Picking a region based on habit rather than latency, cost, or compliance needs.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Treating the Management Console as the only way to work with AWS, and never learning the CLI/API.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "Under the AWS Shared Responsibility Model, who is responsible for correctly configuring a security group?", "options": ["AWS", "The customer", "Neither \u2014 security groups are configured automatically", "Whichever party paid for AWS Support"], "correct": 1, "explanation": "AWS secures the underlying infrastructure; configuring resources correctly \u2014 including security groups \u2014 is squarely the customer's side of the shared responsibility line."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>AWS&#x27;s global infrastructure is Regions and Availability Zones</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>The Shared Responsibility Model splits security duties between AWS and you</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Compliance and account security start before you launch a single resource</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="aws-foundations">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="iam.html">Next: IAM <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

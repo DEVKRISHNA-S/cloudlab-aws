@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EC2 — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="4" y="4" width="16" height="16" rx="1.5"/><rect x="8" y="8" width="8" height="8" rx="0.5"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
+    <div><h1 class="lesson-title">EC2</h1><p class="lesson-tagline">Compute in the cloud</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">EC2 (Elastic Compute Cloud) gives you a virtual server — a computer you rent by the hour or second, sitting in an AWS data center.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Not every application fits a serverless model. Some workloads need a persistent, always-on environment with full control over the operating system — that&#x27;s what EC2 is for.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">The backend of this website runs on a single EC2 instance inside the VPC&#x27;s public subnet, serving the application continuously.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Buying and maintaining physical servers is slow, expensive, and hard to scale. EC2 solves this by letting you provision a server in minutes, resize it on demand, and pay only for the time it runs.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The Mental Model</h2>
+<div class="mental-grid">
+  <div class="mental-card"><div class="mental-card-label">Your laptop</div><div class="mental-card-detail">A physical computer you own, sitting on your desk.</div></div>
+  <div class="mental-card right"><div class="mental-card-label">EC2</div><div class="mental-card-detail">A computer you rent from AWS, sized to your needs, that lives in a data center instead of your desk.</div></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">How EC2 works</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">Choose an AMI (the OS image)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">Choose an Instance Type (CPU/RAM size)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">Attach Storage (EBS volume)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">Attach a Security Group (firewall rules)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">Launch → Running Instance</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">AMI</div><div class="concept-def">Amazon Machine Image — a snapshot of an operating system and pre-installed software used to launch an instance.</div></div><div class="concept-card"><div class="concept-term">Instance types</div><div class="concept-def">Predefined hardware sizes (like t3.micro or m5.large) trading off CPU, memory, and cost.</div></div><div class="concept-card"><div class="concept-term">EBS</div><div class="concept-def">Elastic Block Store — persistent disk storage attached to an instance, surviving reboots.</div></div><div class="concept-card"><div class="concept-term">Security groups</div><div class="concept-def">A virtual firewall controlling which traffic can reach the instance.</div></div><div class="concept-card"><div class="concept-term">Public/private IP</div><div class="concept-def">A public IP is reachable from the internet; a private IP is only reachable inside the VPC.</div></div><div class="concept-card"><div class="concept-term">SSH</div><div class="concept-def">The secure protocol used to remotely log into and control a Linux instance.</div></div><div class="concept-card"><div class="concept-term">Key pairs</div><div class="concept-def">A public/private key used instead of a password to authenticate SSH access.</div></div><div class="concept-card"><div class="concept-term">Regions</div><div class="concept-def">Separate geographic areas AWS operates in, like us-east-1 or eu-west-1.</div></div><div class="concept-card"><div class="concept-term">Availability Zones</div><div class="concept-def">Physically isolated data centers within a region, used for redundancy.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M4 5h16v14H4z"/><path d="M7.5 9.5l3 2.5-3 2.5M13 15h4"/></svg>Terminal</h2>
+<p class="text-mute" style="margin-bottom:16px;font-size:14px;">A realistic simulation — nothing here runs on a real server.</p>
+<div class="terminal" data-terminal>
+  <div class="terminal-titlebar">
+    <span class="dot dot-coral"></span><span class="dot dot-amber"></span><span class="dot dot-mint"></span>
+    <span class="terminal-title">ec2@cloudlab:~</span>
+  </div>
+  <script type="application/json" data-terminal-lines>[{"cmd": "aws ec2 describe-instances --instance-ids i-0d4f8b2", "output": "{\n  \"State\": { \"Name\": \"running\" },\n  \"InstanceType\": \"t3.micro\",\n  \"PublicIpAddress\": \"3.91.20.14\",\n  \"PrivateIpAddress\": \"10.0.1.23\"\n}"}, {"cmd": "ssh ubuntu@3.91.20.14", "output": "Welcome to Ubuntu 22.04.4 LTS\nLast login: Mon Sep 14 09:12:03 2026 from 203.0.113.7"}, {"cmd": "sudo systemctl status nginx", "output": "\u25cf nginx.service - A high performance web server\n   Active: active (running) since Mon 2026-09-14 08:55:41 UTC"}]</script>
+  <div class="terminal-body" data-terminal-body></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Losing the private key file and permanently locking yourself out.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Leaving an instance running after you&#x27;re done experimenting.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Choosing an oversized instance type before knowing the real workload.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Storing application secrets directly on the instance instead of using IAM roles.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You launched an EC2 instance but can't SSH into it. What should you check first?", "options": ["Whether the AMI is the newest version available", "Whether the security group allows inbound SSH from your IP", "Whether the instance has enough EBS storage", "Whether the VPC has a name tag"], "correct": 1, "explanation": "SSH failures are almost always a security group blocking port 22 from your current IP \u2014 check that before touching the OS or the key pair."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>EC2 is a rented, configurable virtual server</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>AMI + instance type + storage + security group define an instance</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>It&#x27;s the right tool for persistent, always-on workloads</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="ec2">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="databases-cdn.html">Next: Databases &amp; Content Delivery <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

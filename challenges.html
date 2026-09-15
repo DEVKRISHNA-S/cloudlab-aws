@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Challenges — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="dashboard.html">Learning Path</a>
+<a class="nav-link" href="architecture.html">Architecture</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link active" href="challenges.html">Challenges</a>
+<a class="nav-link" href="about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="dashboard.html">Learning Path</a>
+<a class="nav-link" href="architecture.html">Architecture</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link active" href="challenges.html">Challenges</a>
+<a class="nav-link" href="about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <span class="badge badge-amber">Challenges</span>
+  <h1 style="font-size:34px;margin-top:16px;">Test what you've learned</h1>
+  <p class="text-mute mt-8">One scenario-based question per service. Get it wrong and you still get the reasoning &mdash; that's the point.</p>
+  <div class="mt-8"><div class="section">
+  <a href="lessons/iam.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg> IAM</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A policy has no explicit \"Allow\" statement for an action, and no explicit \"Deny\" either. What happens?", "options": ["The action is allowed by default", "The action is denied by default", "AWS asks the user to confirm", "It depends on the region"], "correct": 1, "explanation": "IAM defaults to implicit deny. An action is only permitted if some policy explicitly allows it \u2014 silence is treated as \"no\"."}</script></div>
+</div><div class="section">
+  <a href="lessons/vpc.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="3" y="4" width="18" height="16" rx="2" stroke-dasharray="3 2"/><rect x="6.5" y="8" width="6" height="5" rx="1"/><rect x="13.5" y="14" width="6" height="4" rx="1"/></svg> VPC</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "An EC2 instance has a public IP address but you still can't reach it over HTTP. What's the most likely first thing to check?", "options": ["The instance's operating system version", "Whether the security group allows inbound traffic on port 80", "The AWS account's billing status", "The instance's AMI name"], "correct": 1, "explanation": "A public IP only makes a resource reachable if a security group rule also allows the traffic in on the right port. It's the single most common cause of \"I can't connect.\""}</script></div>
+</div><div class="section">
+  <a href="lessons/ec2.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="4" y="4" width="16" height="16" rx="1.5"/><rect x="8" y="8" width="8" height="8" rx="0.5"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg> EC2</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You launched an EC2 instance but can't SSH into it. What should you check first?", "options": ["Whether the AMI is the newest version available", "Whether the security group allows inbound SSH from your IP", "Whether the instance has enough EBS storage", "Whether the VPC has a name tag"], "correct": 1, "explanation": "SSH failures are almost always a security group blocking port 22 from your current IP \u2014 check that before touching the OS or the key pair."}</script></div>
+</div><div class="section">
+  <a href="lessons/linux.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M7 9.5l3 2.5-3 2.5M13 14.5h4"/></svg> Linux</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A web service won't start and you want to know why. What's the most direct next step?", "options": ["Reboot the whole instance", "Read the service's logs with journalctl -u <service>", "Reinstall the operating system", "Increase the EC2 instance size"], "correct": 1, "explanation": "journalctl shows exactly why a systemd service failed to start \u2014 the fastest path to a real answer, before reaching for bigger, slower fixes."}</script></div>
+</div><div class="section">
+  <a href="lessons/s3.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M4 6.5c0-1.4 3.6-2.5 8-2.5s8 1.1 8 2.5-3.6 2.5-8 2.5-8-1.1-8-2.5z"/><path d="M4 6.5V17c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V6.5M4 11.8c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></svg> S3</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You need to let a user download one private file for the next 10 minutes, without making the bucket public. What's the right tool?", "options": ["A bucket policy allowing all reads", "A presigned URL", "Making the object versioned", "Changing the storage class"], "correct": 1, "explanation": "A presigned URL grants time-limited access to a single private object, without ever exposing the bucket itself."}</script></div>
+</div><div class="section">
+  <a href="lessons/lambda.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M7 4l6 8-3 8M11 4l7 16"/></svg> Lambda</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A Lambda function needs to remember data between separate invocations. Where should that state live?", "options": ["In a local variable inside the handler", "In a file written to /tmp and left there", "In an external store like S3 or a database", "It can't be avoided \u2014 Lambda always remembers"], "correct": 2, "explanation": "Lambda execution environments are not guaranteed to persist. Anything that needs to survive between invocations belongs in external storage."}</script></div>
+</div><div class="section">
+  <a href="lessons/apigw.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><rect x="3" y="10" width="6" height="4" rx="1"/><rect x="15" y="10" width="6" height="4" rx="1"/><path d="M9 12h6M12 10V6a2 2 0 012-2h2M12 14v4a2 2 0 002 2h2"/></svg> API Gateway</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A browser-based app calls your API Gateway route and gets blocked by the browser with a CORS error. What's missing?", "options": ["An IAM role on the Lambda function", "CORS configuration on the API Gateway route", "A larger Lambda memory allocation", "A Route 53 hosted zone"], "correct": 1, "explanation": "CORS errors are enforced by the browser and fixed by explicitly allowing the calling origin in the API Gateway route's CORS settings."}</script></div>
+</div><div class="section">
+  <a href="lessons/cloudwatch.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg> CloudWatch &amp; SNS</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "Which best describes the difference between monitoring and observability?", "options": ["They are the same thing with different names", "Monitoring watches known metrics; observability lets you investigate the unexpected", "Monitoring is for Lambda only; observability is for EC2 only", "Observability replaces the need for logs"], "correct": 1, "explanation": "Monitoring answers questions you thought to ask in advance. Observability is having enough data to answer questions you didn't anticipate."}</script></div>
+</div><div class="section">
+  <a href="lessons/route53.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5C9.8 18.2 8.6 15.2 8.6 12S9.8 5.8 12 3.5z"/></svg> Route 53</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A visitor types your domain name into their browser. What does Route 53's hosted zone actually do?", "options": ["It stores the website's HTML files", "It resolves the domain name to the correct destination via DNS records", "It runs the application's backend code", "It encrypts the application's database"], "correct": 1, "explanation": "Route 53's job is purely name resolution \u2014 turning the domain name into the address of whatever is actually serving the application."}</script></div>
+</div><div class="section">
+  <a href="lessons/networking.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.7 7.6L11 16.2M17.3 7.6L13 16.2M7.2 6h9.6"/></svg> Networking Fundamentals</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A video call keeps freezing for a split second rather than failing outright. Which transport protocol is most likely being used, and why does that explain the behavior?", "options": ["TCP \u2014 it waits to redeliver lost packets in order", "UDP \u2014 it drops late packets rather than waiting for them", "HTTP \u2014 it has no concept of packets", "DNS \u2014 it only resolves names, not media"], "correct": 1, "explanation": "Real-time media typically favors UDP: a momentary freeze/glitch is preferable to TCP's guaranteed-but-delayed redelivery, which would make a live call lag instead."}</script></div>
+</div><div class="section">
+  <a href="lessons/subnetting.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.7 7.6L11 16.2M17.3 7.6L13 16.2M7.2 6h9.6"/></svg> IP Addressing &amp; Subnetting</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You need a subnet with at least 100 usable host addresses. Which prefix length is the smallest one that fits?", "options": ["/28 (14 usable hosts)", "/25 (126 usable hosts)", "/22 (1,022 usable hosts)", "/30 (2 usable hosts)"], "correct": 1, "explanation": "A /25 leaves 7 host bits, giving 126 usable addresses \u2014 the smallest block on this list that comfortably covers 100 hosts without wasting a much larger range."}</script></div>
+</div><div class="section">
+  <a href="lessons/cloud-fundamentals.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M7 18a4.5 4.5 0 01-.6-8.96A5.5 5.5 0 0117 8.5a4 4 0 01-.5 8H7z"/></svg> Cloud &amp; AWS Fundamentals</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A company's traffic spikes heavily during holidays and is quiet the rest of the year. What cloud property most directly solves the cost problem this creates?", "options": ["Total Cost of Ownership", "Elasticity \u2014 scaling capacity up and down with demand", "AWS Organizations", "The billing dashboard"], "correct": 1, "explanation": "Elasticity lets you pay for large capacity only during the spike and scale back down afterward, instead of owning year-round infrastructure sized for a few busy weeks."}</script></div>
+</div><div class="section">
+  <a href="lessons/aws-foundations.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="12" cy="12" r="9"/><path d="M3 9h18M3 15h18M12 3c2.2 2.5 3.3 5.6 3.3 9s-1.1 6.5-3.3 9c-2.2-2.5-3.3-5.6-3.3-9S9.8 5.5 12 3z"/></svg> AWS Foundations</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "Under the AWS Shared Responsibility Model, who is responsible for correctly configuring a security group?", "options": ["AWS", "The customer", "Neither \u2014 security groups are configured automatically", "Whichever party paid for AWS Support"], "correct": 1, "explanation": "AWS secures the underlying infrastructure; configuring resources correctly \u2014 including security groups \u2014 is squarely the customer's side of the shared responsibility line."}</script></div>
+</div><div class="section">
+  <a href="lessons/databases-cdn.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg> Databases &amp; Content Delivery</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A team needs to run complex analytical queries across years of historical sales data. Which service fits best?", "options": ["DynamoDB", "Redshift", "CloudFront", "Route 53"], "correct": 1, "explanation": "Redshift is purpose-built as a data warehouse for large-scale analytical queries \u2014 exactly this kind of historical, aggregate analysis \u2014 rather than fast single-record lookups."}</script></div>
+</div><div class="section">
+  <a href="lessons/well-architected.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12l8 4.5 8-4.5M4 16.5L12 21l8-4.5"/></svg> AWS Well-Architected Framework</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A single EC2 instance runs a production application with no backup or failover instance. Which Well-Architected pillar does this most clearly violate?", "options": ["Cost Optimization", "Reliability", "Performance Efficiency", "Operational Excellence"], "correct": 1, "explanation": "A single point of failure with no redundancy is a direct Reliability gap \u2014 the system cannot recover automatically if that one instance fails."}</script></div>
+</div><div class="section">
+  <a href="lessons/security-services.html" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--font-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M12 3l7 3v5.5c0 4.6-3 7.9-7 9.5-4-1.6-7-4.9-7-9.5V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg> AWS Security Services</a>
+  <div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "Which of these three services is specifically designed to block a malicious HTTP request before it reaches your application?", "options": ["GuardDuty", "AWS Inspector", "AWS WAF", "None of them operate at the HTTP request level"], "correct": 2, "explanation": "AWS WAF sits in front of your application and filters HTTP requests in real time \u2014 GuardDuty watches account/network activity, and Inspector scans for vulnerabilities rather than filtering live traffic."}</script></div>
+</div></div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Learning Path</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="dashboard.html">Learning Path</a>
+<a class="nav-link" href="architecture.html">Architecture</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="challenges.html">Challenges</a>
+<a class="nav-link active" href="about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="dashboard.html">Learning Path</a>
+<a class="nav-link" href="architecture.html">Architecture</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="challenges.html">Challenges</a>
+<a class="nav-link active" href="about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <span class="badge badge-amber">About</span>
+  <h1 style="font-size:32px;margin-top:16px;">This project is both a website and an AWS learning experiment.</h1>
+  <p class="text-mute mt-8" style="line-height:1.7;">Most cloud tutorials describe AWS services in the abstract. CloudLab AWS takes a different approach: the site you're using is itself the case study. Its own architecture &mdash; the network, the compute, the storage, the monitoring &mdash; is the curriculum.</p>
+  <p class="text-mute" style="line-height:1.7;margin-top:16px;">The goal isn't to cover every AWS service that exists. It's to teach a focused set of them deeply enough that you understand not just what each one is, but why a real, working system needed it, and how it connects to everything around it.</p>
+
+  <div class="card mt-8">
+    <div class="text-mute" style="font-family:var(--font-mono);font-size:13px;margin-bottom:12px;">Built with</div>
+    <div class="chip-row"><span class="badge">React-free HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">AWS</span><span class="badge">Linux</span><span class="badge">GitHub</span></div>
+    <a href="https://github.com" target="_blank" rel="noreferrer" class="btn btn-outline mt-8" style="margin-top:20px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> View the repository</a>
+  </div>
+
+  <section class="section mt-8">
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:6px;">The Team</h2>
+    <p class="text-mute" style="font-size:13.5px;margin-bottom:20px;">5 contributors built this project. Names and contributions below are placeholders &mdash; swap them in whenever you're ready.</p>
+    <div class="team-grid"><div class="team-card">
+  <div class="team-avatar">M</div>
+  <div class="team-name">Devkrishna sharma</div>
+  <div class="team-role">ROLE — Project Lead</div>
+  <p class="team-contribution"> Designed the overall AWS architecture, divided the deployment into services, coordinated the team, integrated the components, and handled the final deployment and documentation.</p>
+</div><div class="team-card">
+  <div class="team-avatar">M</div>
+  <div class="team-name">Disha singh</div>
+  <div class="team-role">ROLE — Frontend & S3 Engineer</div>
+  <p class="team-contribution">Developed and organized the HTML/CSS/JavaScript application and deployed the static website and assets to Amazon S3, including configuring the required bucket access and hosting setup.</p>
+</div><div class="team-card">
+  <div class="team-avatar">M</div>
+  <div class="team-name">Karishma </div>
+  <div class="team-role">ROLE — Networking & VPC Engineer</div>
+  <p class="team-contribution">Designed and configured the VPC, subnets, route tables, Internet Gateway, security groups, and networking required for the application and EC2 resources.</p>
+</div><div class="team-card">
+  <div class="team-avatar">M</div>
+  <div class="team-name">Devansh gupta</div>
+  <div class="team-role">ROLE — Compute & Serverless Engineer</div>
+  <p class="team-contribution">Configured the EC2 environment and application server, and developed/deployed Lambda functions and API integration to demonstrate both traditional and serverless AWS compute.</p>
+</div><div class="team-card">
+  <div class="team-avatar">M</div>
+  <div class="team-name">Daksh verma</div>
+  <div class="team-role">ROLE —Security, Monitoring & DNS Engineer</div>
+  <p class="team-contribution">Managed IAM roles and permissions, configured CloudWatch logs/metrics, and handled the Route 53/DNS portion of the architecture and its integration with the application.</p>
+</div></div>
+  </section>
+
+  <div class="mt-8">
+    <a class="btn btn-primary" href="architecture.html">Explore the architecture <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Learning Path</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>

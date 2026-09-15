@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Networking Fundamentals — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.7 7.6L11 16.2M17.3 7.6L13 16.2M7.2 6h9.6"/></svg></span>
+    <div><h1 class="lesson-title">Networking Fundamentals</h1><p class="lesson-tagline">How data actually moves</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">The OSI and TCP/IP models describe how two computers exchange data — from raw electrical signals up to the application talking to you right now.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Every AWS service in this course — VPC, Route 53, API Gateway — is a cloud-shaped wrapper around ordinary networking. Without this layer, terms like &#x27;subnet&#x27; or &#x27;routing&#x27; are just vocabulary, not understanding.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">This project&#x27;s own request path (visitor → Route 53 → VPC → EC2) is a real-world walk through the OSI model: DNS resolution, routing, and transport all happen before the application layer ever sees the request.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Two machines can&#x27;t just &#x27;talk&#x27; — they need a shared, layered set of rules for addressing, routing, and framing data, agreed on by every device and vendor on the internet. Networking standards are that shared agreement.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The Mental Model</h2>
+<div class="mental-grid">
+  <div class="mental-card"><div class="mental-card-label">A postal system</div><div class="mental-card-detail">An address format, sorting depots, and delivery trucks — layers that don&#x27;t need to know what&#x27;s inside the envelope.</div></div>
+  <div class="mental-card right"><div class="mental-card-label">The OSI Model</div><div class="mental-card-detail">Physical wiring, addressing, routing, and application layers — each one only needs to trust the layer below it, not understand it.</div></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The layers a request passes through</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">Physical — electrical signals or radio waves on the wire</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">Data Link — Ethernet frames between adjacent devices</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">Network — IP addressing and routing between networks</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">Transport — TCP/UDP breaking data into reliable segments</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">Application — HTTP, DNS, and the protocols you actually recognize</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">OSI Model</div><div class="concept-def">A 7-layer reference model describing how network communication is organized.</div></div><div class="concept-card"><div class="concept-term">TCP/IP</div><div class="concept-def">The practical 4-layer protocol suite the real internet actually runs on.</div></div><div class="concept-card"><div class="concept-term">Topologies</div><div class="concept-def">The physical or logical shape of a network — star, mesh, bus.</div></div><div class="concept-card"><div class="concept-term">Ethernet standards</div><div class="concept-def">Rules governing how devices on a local network frame and send data.</div></div><div class="concept-card"><div class="concept-term">Network hardware</div><div class="concept-def">Switches, routers, and firewalls — the physical devices that move and filter traffic.</div></div><div class="concept-card"><div class="concept-term">WANs</div><div class="concept-def">Networks spanning long distances, connecting separate local networks together.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Treating the OSI model as something devices implement literally, rather than a mental map.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Confusing switches (Layer 2, local) with routers (Layer 3, between networks).</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Assuming TCP and UDP are interchangeable — one guarantees delivery, the other doesn&#x27;t.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Ignoring physical/hardware limits when diagnosing a &#x27;software&#x27; networking problem.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A video call keeps freezing for a split second rather than failing outright. Which transport protocol is most likely being used, and why does that explain the behavior?", "options": ["TCP \u2014 it waits to redeliver lost packets in order", "UDP \u2014 it drops late packets rather than waiting for them", "HTTP \u2014 it has no concept of packets", "DNS \u2014 it only resolves names, not media"], "correct": 1, "explanation": "Real-time media typically favors UDP: a momentary freeze/glitch is preferable to TCP's guaranteed-but-delayed redelivery, which would make a live call lag instead."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Networking is layered so each piece only needs to trust the layer below it</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>TCP/IP is the practical protocol suite behind &#x27;the internet&#x27;</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Every AWS networking service you&#x27;ll meet next is built on these same fundamentals</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="networking">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="subnetting.html">Next: IP Addressing &amp; Subnetting <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

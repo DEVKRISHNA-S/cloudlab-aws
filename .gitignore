@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# AWS credentials
+.aws/
+*.pem
+*.key
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build / dependency directories
+node_modules/
+dist/
+build/
+
+# Local development files
+.local/

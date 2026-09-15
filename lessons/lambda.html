@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lambda — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M7 4l6 8-3 8M11 4l7 16"/></svg></span>
+    <div><h1 class="lesson-title">Lambda</h1><p class="lesson-tagline">Serverless compute</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">Lambda runs a small piece of your code in response to an event — without you provisioning or managing any server at all.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">Some tasks are short, bursty, or infrequent, and don&#x27;t justify a server running 24/7. Lambda lets you pay only for the milliseconds your code actually executes.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">A small utility function in this project — handling a specific API request — runs on Lambda instead of the always-on EC2 instance, since it only needs to run occasionally.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Keeping a server running around the clock for a task that fires a few times a day wastes money and operational effort. Lambda solves this by executing code only when triggered, then shutting back down.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">The Lambda execution flow</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">An event occurs (HTTP request, file upload, schedule...)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">AWS provisions a short-lived runtime</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">Your function handler runs</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">A response or side effect is returned</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">The environment is torn down</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">A Minimal Example</h2>
+<div class="codeblock">
+  <div class="codeblock-head"><span class="codeblock-lang">python</span>
+  <button class="copy-btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.closest('.codeblock').querySelector('pre').innerText)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a1 1 0 011-1h10"/></svg> Copy</button></div>
+  <pre><code>def handler(event, context):
+    return {
+        &quot;statusCode&quot;: 200,
+        &quot;body&quot;: &quot;Hello from Lambda&quot;
+    }</code></pre>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">When to reach for this</h2><div class="when-grid"><div class="when-card"><div class="when-title">Prefer Lambda when</div><ul><li>Work is short-lived (seconds, not hours)</li><li>Traffic is bursty or infrequent</li><li>You want zero server maintenance</li></ul></div><div class="when-card"><div class="when-title">Prefer EC2 when</div><ul><li>The process must run continuously</li><li>You need full control over the OS/runtime</li><li>Execution time regularly exceeds Lambda&#x27;s limits</li></ul></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">Functions</div><div class="concept-def">The unit of deployment — your code plus its runtime configuration.</div></div><div class="concept-card"><div class="concept-term">Events</div><div class="concept-def">The trigger that invokes a function: an API call, a file upload, a schedule, etc.</div></div><div class="concept-card"><div class="concept-term">Runtime</div><div class="concept-def">The language environment (Python, Node.js, etc.) that executes your code.</div></div><div class="concept-card"><div class="concept-term">Invocation</div><div class="concept-def">A single execution of the function in response to one event.</div></div><div class="concept-card"><div class="concept-term">Stateless execution</div><div class="concept-def">Nothing is guaranteed to persist between invocations — state must live elsewhere (like S3 or a database).</div></div><div class="concept-card"><div class="concept-term">Cold starts</div><div class="concept-def">The extra latency the first time a function runs, while AWS prepares a fresh execution environment.</div></div><div class="concept-card"><div class="concept-term">Permissions</div><div class="concept-def">Lambda functions run under an IAM role scoping exactly what they&#x27;re allowed to touch.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Assuming local files written during execution persist to the next invocation.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Giving a function&#x27;s role broad, unscoped permissions.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Ignoring cold-start latency for latency-sensitive user-facing calls.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Using Lambda for a workload that really needs a persistent, long-running process.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "A Lambda function needs to remember data between separate invocations. Where should that state live?", "options": ["In a local variable inside the handler", "In a file written to /tmp and left there", "In an external store like S3 or a database", "It can't be avoided \u2014 Lambda always remembers"], "correct": 2, "explanation": "Lambda execution environments are not guaranteed to persist. Anything that needs to survive between invocations belongs in external storage."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Lambda runs code only when triggered, with no server to manage</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Execution is stateless — persistence belongs elsewhere</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>It complements EC2 rather than replacing it</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="lambda">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="apigw.html">Next: API Gateway <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

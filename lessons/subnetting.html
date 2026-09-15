@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IP Addressing &amp; Subnetting — CloudLab AWS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M6 17a4 4 0 01-1-7.9A5 5 0 0114.8 7 4.5 4.5 0 0117 17H6z"/><path d="M8 13l2-3 2 2 3-4" stroke="#F0A828"/></svg></span>
+      <span class="brand-name">CloudLab <span class="brand-sub">AWS</span></span>
+    </a>
+    <nav class="nav-links"><a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a></nav>
+    <div class="nav-progress">
+      <div class="nav-progress-label"><span>Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="nav-mobile" data-nav-mobile>
+    <a class="nav-link" href="../dashboard.html">Learning Path</a>
+<a class="nav-link" href="../architecture.html">Architecture</a>
+<a class="nav-link" href="../services.html">Services</a>
+<a class="nav-link" href="../challenges.html">Challenges</a>
+<a class="nav-link" href="../about.html">About</a>
+    <div class="nav-mobile-progress">
+      <div class="nav-progress-label"><span>Learning Progress</span><span data-nav-progress-pct>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" data-nav-progress-bar style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="container-narrow page-pad">
+  <a class="back-link" href="../dashboard.html">&#8592; all services</a>
+  <div class="lesson-header">
+    <span class="lesson-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.7 7.6L11 16.2M17.3 7.6L13 16.2M7.2 6h9.6"/></svg></span>
+    <div><h1 class="lesson-title">IP Addressing &amp; Subnetting</h1><p class="lesson-tagline">Carving a network into pieces</p></div>
+  </div>
+  
+<div class="top3-grid">
+  <div class="top3-card"><div class="top3-label">What is it?</div><div class="top3-body">Subnetting splits one large block of IP addresses into smaller, purpose-built pieces — exactly what a VPC&#x27;s public and private subnets are doing.</div></div>
+  <div class="top3-card"><div class="top3-label">Why does it exist?</div><div class="top3-body">A single flat network doesn&#x27;t let you separate &#x27;internet-facing&#x27; resources from &#x27;internal-only&#x27; ones, and it wastes addresses. Subnetting (via FLSM and VLSM) fixes both.</div></div>
+  <div class="top3-card"><div class="top3-label">How this project uses it</div><div class="top3-body">This project&#x27;s VPC (10.0.0.0/16) is subnetted into a public subnet (10.0.1.0/24) for EC2 and a private subnet (10.0.2.0/24) reserved for internal services — the same math taught in this module.</div></div>
+</div><section class="section"><h2 style="font-size:18px;margin-bottom:8px;">The Problem</h2><p class="text-mute">Without subnetting, every device would share one enormous broadcast domain, and there&#x27;d be no clean way to separate public from private resources. Carving address space into right-sized subnets solves both problems at once.</p></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">From one block to many</h2><div class="flow-diagram"><div class="flow-item"><div class="flow-row"><span class="flow-num">1</span><span class="flow-text">Start with a block, e.g. 10.0.0.0/16 (65,536 addresses)</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">2</span><span class="flow-text">Decide how many subnets you need</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">3</span><span class="flow-text">Borrow bits from the host portion to create subnet boundaries</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">4</span><span class="flow-text">FLSM gives every subnet the same fixed size</span></div></div><div class="flow-item"><div class="flow-row"><span class="flow-num">5</span><span class="flow-text">VLSM sizes each subnet to what it actually needs, wasting fewer addresses</span></div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Important Concepts</h2><div class="grid grid-3"><div class="concept-card"><div class="concept-term">IP address</div><div class="concept-def">A numeric address identifying a device on a network.</div></div><div class="concept-card"><div class="concept-term">CIDR notation</div><div class="concept-def">A slash number (e.g. /24) indicating how many bits are fixed for the network portion.</div></div><div class="concept-card"><div class="concept-term">FLSM</div><div class="concept-def">Fixed-Length Subnet Masking — every subnet carved from the block is the same size.</div></div><div class="concept-card"><div class="concept-term">VLSM</div><div class="concept-def">Variable-Length Subnet Masking — subnets are sized individually, matching real demand.</div></div><div class="concept-card"><div class="concept-term">Network vs. host bits</div><div class="concept-def">The network portion identifies the subnet; the host portion identifies a device within it.</div></div><div class="concept-card"><div class="concept-term">Broadcast address</div><div class="concept-def">The reserved address at the top of a subnet used to reach every device on it at once.</div></div></div></section><section class="section"><h2 style="font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><path d="M4 5h16v14H4z"/><path d="M7.5 9.5l3 2.5-3 2.5M13 15h4"/></svg>Terminal</h2><p class="text-mute" style="margin-bottom:16px;font-size:14px;">A realistic simulation — nothing here runs on a real server.</p><div class="terminal" data-terminal>
+  <div class="terminal-titlebar">
+    <span class="dot dot-coral"></span><span class="dot dot-amber"></span><span class="dot dot-mint"></span>
+    <span class="terminal-title">subnetting@cloudlab:~</span>
+  </div>
+  <script type="application/json" data-terminal-lines>[{"cmd": "ipcalc 10.0.0.0/16", "output": "Address:   10.0.0.0\nNetmask:   255.255.0.0 = 16\nNetwork:   10.0.0.0/16\nHostMin:   10.0.0.1\nHostMax:   10.0.255.254\nBroadcast: 10.0.255.255\nHosts/Net: 65534"}, {"cmd": "ipcalc 10.0.1.0/24", "output": "Address:   10.0.1.0\nNetmask:   255.255.255.0 = 24\nNetwork:   10.0.1.0/24\nHostMin:   10.0.1.1\nHostMax:   10.0.1.254\nBroadcast: 10.0.1.255\nHosts/Net: 254"}, {"cmd": "ipcalc 10.0.2.0/25", "output": "Address:   10.0.2.0\nNetmask:   255.255.255.128 = 25\nNetwork:   10.0.2.0/25\nHostMin:   10.0.2.1\nHostMax:   10.0.2.126\nBroadcast: 10.0.2.127\nHosts/Net: 126   (VLSM: right-sized instead of a full /24)"}]</script>
+  <div class="terminal-body" data-terminal-body></div>
+</div></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Common Mistakes</h2><ul class="mistakes-list"><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Forgetting that the first and last address in a subnet are reserved (network and broadcast).</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Using FLSM when subnet sizes actually vary a lot, wasting large blocks of addresses.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Miscounting borrowed bits and ending up with the wrong number of usable hosts.</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3l9.5 17H2.5L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>Assuming a bigger CIDR block number means a bigger network — it&#x27;s the opposite.</li></ul></section><section class="section"><h2 style="font-size:18px;margin-bottom:16px;">Mini Challenge</h2><div class="quiz" data-quiz><script type="application/json" data-quiz-data>{"question": "You need a subnet with at least 100 usable host addresses. Which prefix length is the smallest one that fits?", "options": ["/28 (14 usable hosts)", "/25 (126 usable hosts)", "/22 (1,022 usable hosts)", "/30 (2 usable hosts)"], "correct": 1, "explanation": "A /25 leaves 7 host bits, giving 126 usable addresses \u2014 the smallest block on this list that comfortably covers 100 hosts without wasting a much larger range."}</script></div></section><section class="section"><div class="summary-box"><div class="summary-label">You now understand:</div><ul><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>Subnetting splits address space into purpose-built pieces</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>FLSM is simple; VLSM is efficient</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 13l4 4L19 7"/></svg>This is the exact math behind every VPC subnet you&#x27;ll design later</li></ul></div></section>
+  <div class="lesson-footer-nav">
+  <button class="btn btn-outline" data-mark-complete="subnetting">Mark this lesson complete</button>
+  <a class="btn btn-primary" href="linux.html">Next: Linux <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">CloudLab AWS</div>
+      <p class="footer-tag">An interactive AWS course, built on and teaching the same infrastructure that runs it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../dashboard.html">Learning Path</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.1-.5 2V21"/></svg> GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/terminal.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>
